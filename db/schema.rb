@@ -40,4 +40,8 @@ ActiveRecord::Schema.define(version: 2019_03_03_225704) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "appointments", "users", column: "client_id"
+  add_foreign_key "appointments", "users", column: "coach_id"
+  add_foreign_key "time_slots", "users", column: "client_id"
+  add_foreign_key "time_slots", "users", column: "coach_id"
 end

@@ -1,0 +1,39 @@
+version: '3'
+volumes:
+  mysql-data:
+  bundle:
+  node-modules:
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD='true'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+  webpacker:
+    image: koach_app:latest
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/koach
+      - bundle:/usr/local/bundle
+      - node-modules:/koach/node_modules
+    ports:
+      - "8080:8080"
+  app:
+    build: .
+    entrypoint:
+      - bin/entrypoint.sh
+    command: rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+    volumes:
+      - .:/koach
+      - bundle:/usr/local/bundle
+      - node-modules:/koach/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql

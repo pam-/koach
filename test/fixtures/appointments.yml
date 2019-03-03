@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-03-03 17:56:52
+  coach: one
+  client: one
+
+two:
+  date: 2019-03-03 17:56:52
+  coach: two
+  client: two

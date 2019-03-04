@@ -22,7 +22,7 @@ RUN bundle config build.nokogiri --use-system-libraries
 
 ENV BUNDLE_PATH /usr/local/bundle
 
-ENV WORKDIR=couchcoach
+ENV WORKDIR=koach
 
 RUN mkdir /${WORKDIR}
 WORKDIR /${WORKDIR}

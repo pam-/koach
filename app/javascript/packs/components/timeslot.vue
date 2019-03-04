@@ -10,7 +10,7 @@ export default {
   props: ['data'],
   data: function () {
     return {
-      timeSlot: JSON.parse(this.data).timeSlot
+      // timeSlot: JSON.parse(this.data).timeSlot
     }
   }
 }

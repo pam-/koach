@@ -7,7 +7,7 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
-import Vue from 'vue';
+import Vue from 'vue/dist/vue.esm.js';
 import axios from 'axios';
 
 import './styles/index';
@@ -18,14 +18,11 @@ axios.defaults.headers.common['X-CSRF-Token'] = token;
 axios.defaults.headers.common['Accept'] = 'application/json';
 window.axios = axios;
 
-import App from "./components/app.vue";
-
-// Declare a global component: modal
-// Vue.component('base-modal', require('./components/base-modal.vue').default);
+import TimeSlot from "./components/timeslot.vue";
 
 const app = new Vue({
   el: '#app',
   components: {
-    App
+    TimeSlot
   }
 });

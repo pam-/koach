@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'appointments#welcome'
 
   resources :appointments
+  resources :users
 end

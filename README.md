@@ -1,6 +1,6 @@
 # KOACH
 
-![demo][betterup.gif]
+![demo](betterup.gif)
 
 Koach is a platform where users can book appointments with coaches.
 When a user visits Koach, they can see all available time slots divided in 30 minutes increments.

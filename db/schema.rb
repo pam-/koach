@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_03_225704) do
+ActiveRecord::Schema.define(version: 2019_03_04_022248) do
 
   create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "coach_id"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_225704) do
     t.bigint "coach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_open"
     t.index ["coach_id"], name: "index_time_slots_on_coach_id"
   end
 

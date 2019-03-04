@@ -9,12 +9,25 @@
   </head>
 
   <body>
-    <div id="app">
-      <header>
+    <header>
+      <div class="wrapper">
         <h1>KOACH</h1>
-      </header>
+      </div>
+    </header>
+    <% %w(error notice success).each do |type| %>
+      <% if flash[type.to_sym].present? %>
+        <div class="wrapper <%= type %>"><%= flash[type.to_sym] %></div>  
+      <% end %>
+    <% end %>
+    <div id="app" class="wrapper">
       <%= yield %>
     </div>
+
+    <footer>
+      <div class="wrapper">
+        made with 💜 by pam
+      </div>
+    </footer>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

@@ -1,6 +1,7 @@
 <% @coaches.each do |coach| %>
+  <h2><%= coach.name %></h2>
+  <p>Click on a time slot to book your appointment</p>
   <div class="coach-schedule">
-    <h2><%= coach.name %></h2>
     <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |day| %>
       <div class="coach-schedule__day">
         <h3><%= day %></h3>
@@ -8,16 +9,26 @@
           <% if coach.time_slots.send("#{day}").present? %>
             <% coach.time_slots.send("#{day}").each do |ts| %>
               <%#= content_tag(:timeslot, nil, data: {
-                timeSlot: ts
+                timeSlotFrom: ts.formatted_from,
+                timeSlotTo: ts.formatted_to,
+                day: day
               }.to_json) %>
-              <p><%= ts.formatted_from %> - <%= ts.formatted_to  %></p>
+              <% if ts.is_open.present? %>
+                <%= form_for @appointment do |f| %>
+                  <%= f.hidden_field :coach_id, value: coach.id %>
+                  <%= f.hidden_field :client_id, value: @current_user.id %>
+                  <%= f.hidden_field :time_slot_id, value: ts.id %>
+                  <%= f.submit "#{ts.formatted_from} - #{ts.formatted_to}", class: 'class="coach-schedule__timeslot-open'%>
+                <% end %>
+              <% else %>
+                <div class="coach-schedule__timeslots-booked"><%= ts.formatted_from %> - <%= ts.formatted_to  %></div>
+              <% end %>
             <% end %>
           <% else %>
-          No appt available :(
+            No appointments available :(
           <% end %>
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 <% end %>

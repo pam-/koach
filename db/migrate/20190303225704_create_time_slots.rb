@@ -4,7 +4,7 @@ class CreateTimeSlots < ActiveRecord::Migration[5.2]
       t.time :from
       t.time :to
       t.string :timezone
-      t.integer :day
+      t.string :day
       t.references :coach
 
       t.timestamps

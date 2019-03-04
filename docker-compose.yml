@@ -20,7 +20,7 @@ services:
       - bundle:/usr/local/bundle
       - node-modules:/koach/node_modules
     ports:
-      - "8080:8080"
+      - "3035:3035"
   app:
     build: .
     entrypoint:

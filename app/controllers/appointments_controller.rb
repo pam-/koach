@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
-  def welcome
-    @coaches = User.where(is_coach: true)
-    @appointment = Appointment.new
+
+  def index
   end
 
   def create

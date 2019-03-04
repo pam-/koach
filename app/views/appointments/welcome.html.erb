@@ -1,0 +1,23 @@
+<% @coaches.each do |coach| %>
+  <div class="coach-schedule">
+    <h2><%= coach.name %></h2>
+    <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |day| %>
+      <div class="coach-schedule__day">
+        <h3><%= day %></h3>
+        <div class="coach-schedule__timeslots">
+          <% if coach.time_slots.send("#{day}").present? %>
+            <% coach.time_slots.send("#{day}").each do |ts| %>
+              <%#= content_tag(:timeslot, nil, data: {
+                timeSlot: ts
+              }.to_json) %>
+              <p><%= ts.formatted_from %> - <%= ts.formatted_to  %></p>
+            <% end %>
+          <% else %>
+          No appt available :(
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>

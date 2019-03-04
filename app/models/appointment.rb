@@ -3,6 +3,8 @@ class Appointment < ApplicationRecord
   belongs_to :client, class_name: 'User', foreign_key: 'client_id'
   belongs_to :time_slot
 
+  validates_presence_of :coach, :client, :time_slot
+
   def save_and_update_slot
     Appointment.transaction do
       self.save!

@@ -1,9 +1,11 @@
 class CreateAppointments < ActiveRecord::Migration[5.2]
   def change
     create_table :appointments do |t|
-      t.datetime :date
       t.references :coach
       t.references :client
+      t.boolean :is_confirmed
+
+      t.references :time_slot
 
       t.timestamps
     end

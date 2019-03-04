@@ -13,23 +13,25 @@
 ActiveRecord::Schema.define(version: 2019_03_03_225704) do
 
   create_table "appointments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "date"
     t.bigint "coach_id"
     t.bigint "client_id"
+    t.boolean "is_confirmed"
+    t.bigint "time_slot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_appointments_on_client_id"
     t.index ["coach_id"], name: "index_appointments_on_coach_id"
+    t.index ["time_slot_id"], name: "index_appointments_on_time_slot_id"
   end
 
   create_table "time_slots", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "from"
-    t.datetime "to"
+    t.time "from"
+    t.time "to"
+    t.string "timezone"
+    t.integer "day"
     t.bigint "coach_id"
-    t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["client_id"], name: "index_time_slots_on_client_id"
     t.index ["coach_id"], name: "index_time_slots_on_coach_id"
   end
 
@@ -42,6 +44,5 @@ ActiveRecord::Schema.define(version: 2019_03_03_225704) do
 
   add_foreign_key "appointments", "users", column: "client_id"
   add_foreign_key "appointments", "users", column: "coach_id"
-  add_foreign_key "time_slots", "users", column: "client_id"
   add_foreign_key "time_slots", "users", column: "coach_id"
 end

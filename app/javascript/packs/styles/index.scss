@@ -1,19 +1,85 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway|Roboto:400,500,900');
 
+$brand-green: #BDECB6;
+$brand-pink:  #ff85a2;
+$light-grey: #f0ecec25;
+
 body {
-  background-color: #BDECB6;
   font-family: 'Raleway', sans-serif;
+  margin: 0;
 }
 
 h1, h2, h3 {
   font-family: 'Roboto', sans-serif;
 }
 
-#app {
+header {
+  h1 {
+    margin: 0;
+    font-size: 40px;
+    letter-spacing: 10px;
+  }
+  padding: 20px 0;
+  border-bottom: 2px solid $brand-pink;
+}
+
+.success, .notice, .error {
+  padding: 20px 0;
+  font-style: italic;
+  border-bottom: 2px solid transparent;
+}
+
+.success {border-bottom-color: #a7dca7 }
+.notice {border-bottom-color: #95e8ee }
+.error {border-bottom-color: #eea595 }
+
+.wrapper {
   width: 80%;
   margin: 0 auto;
-
   .coach-schedule {
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    border: 2px solid $brand-green;
+    background: $light-grey;
+    &__day {
+      max-width: 160px;
+      width: 100%;
+      text-align: center;
+      &:last-child {
+        border: none
+      }
+    }
+    &__timeslots {
+      max-height: 200px;
+      height: 200px;
+      overflow: scroll;
+      input[type="submit"],
+      &-booked {
+        height: 35px;
+        cursor: pointer;
+        border: none;
+        width: 100%;
+        font-size: 13px;
+        margin: 5px 0;
+      }
+      input[type="submit"] {
+        background-color: $brand-green;
+        &:hover {
+          background-color: darken($color: $brand-green, $amount: 4);
+        }
+      }
+      &-booked {
+        color: #716d6d;
+        text-decoration: line-through
+      }
+    }
   }
+}
+
+footer {
+  margin: 50px 0;
+  border-top: 2px solid $brand-pink;
+  padding: 20px 0;
 }

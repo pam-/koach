@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_03_03_225704) do
     t.time "from"
     t.time "to"
     t.string "timezone"
-    t.integer "day"
+    t.string "day"
     t.bigint "coach_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -8,12 +8,16 @@ puts 'creating fake coaches and timeslots'
 
   puts "coach ##{n}: #{coach.inspect}"
   # TODO create optional MULTIPLE timeslots for a single day
-  %w(1 2 3 4 5 6 7).each do |day|
+  %w(monday tuesday wednesday thursday friday saturday sunday).each do |day|
     puts "coach ##{n}: #{coach.id}"
     next unless [true, false].sample
     start_time = Faker::Time.between(1.day.ago, 1.day.from_now, :morning).at_beginning_of_hour
     end_time = start_time.advance(hours: Faker::Number.between(2, 8), minutes: [0, 30].shuffle[0])
-
-    time_slot = TimeSlot.create(day: day, from: start_time, to: end_time, coach_id: coach.id, timezone: timezone.name)
+    # save time_slot for each increment of 30mn
+    until start_time == end_time
+      puts "start time: #{start_time}"
+      TimeSlot.create(day: day, from: start_time, to: start_time, coach_id: coach.id, timezone: timezone.name)
+      start_time += 30.minutes
+    end
   end
 end

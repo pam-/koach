@@ -1,4 +1,5 @@
 class User < ApplicationRecord
-  has_many :received_appt_requests, class_name: 'Appointment', foreign_key: "coach_id"
-  has_many :sent_appt_requests, class_name: 'Appointment', foreign_key: "client_id"
+  has_many :received_appointments, class_name: 'Appointment', foreign_key: 'client_id'
+  has_many :booked_appointments, class_name: 'Appointment', foreign_key: 'coach_id'
+  has_many :time_slots, foreign_key: 'coach_id'
 end

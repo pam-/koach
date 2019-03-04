@@ -1,0 +1,16 @@
+<div class="schedule">
+  <% %w(monday tuesday wednesday thursday friday saturday sunday).each do |day| %>
+    <div class="coach-schedule__day">
+      <h3><%= day %></h3>
+      <div class="coach-schedule__timeslots">
+        <% @appointments.each do |appt| %>
+            <% if appt.time_slot.day == day %>
+              <div>
+                <%= appt.time_slot.formatted_from %> - <%= appt.time_slot.formatted_to %>
+              </div>
+            <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

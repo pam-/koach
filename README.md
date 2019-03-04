@@ -11,9 +11,7 @@ They can book the time(s) that fit their schedule.
 `docker-compose build`
 
 - Setup the database
-`docker-compose run app --rm rake db:create`
-`docker-compose run app --rm rake db:migrate`
-`docker-compose run app --rm rake db:seed`
+`docker-compose run app --rm rake db:setup`
 
 - Run the app
 `docker-compose up`

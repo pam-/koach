@@ -7,7 +7,7 @@ When a user visits Koach, they can see all available time slots divided in 30 mi
 They can book the time(s) that fit their schedule.
 
 ## Local Setup
-**This app uses [Docker]() to run. Please ensure that [you have it installed]().**
+**This app uses [Docker](https://www.docker.com/get-started) to run. Please ensure that you have it installed.**
 
 - Build the container
 `docker-compose build`

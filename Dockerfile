@@ -30,7 +30,7 @@ WORKDIR /${WORKDIR}
 ADD Gemfile* package.json yarn.lock /${WORKDIR}/
 ADD ./bin/entrypoint.sh /${WORKDIR}/bin/
 
-RUN bundle install
-RUN yarn install
+RUN bundle install --without development test
+RUN yarn install --production
 
 ADD . /${WORKDIR}

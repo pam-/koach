@@ -12,8 +12,16 @@
     <header>
       <div class="wrapper">
         <h1><a href="/">KOACH</a></h1>
-
-        <%= link_to "your appointments", user_path(@current_user.id) %>
+        <% if @current_user.present? %>
+          <div>
+            <ul>
+              <li><%= link_to "your appointments", user_path(@current_user.id) %></li>
+              <li><%= link_to "log out", logout_path %></li>
+            </ul>
+          </div>
+        <% else %>
+          <%= link_to "sign in with google", '/auth/google_oauth2' %>
+        <%end  %>
       </div>
     </header>
     <% %w(error notice success).each do |type| %>

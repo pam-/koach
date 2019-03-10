@@ -21,6 +21,8 @@ services:
       - node-modules:/koach/node_modules
     ports:
       - "3035:3035"
+  redis:
+    image: redis:latest
   app:
     build: .
     entrypoint:
@@ -29,6 +31,7 @@ services:
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_PORT=3306
+      - REDIS_URL=redis://redis:6379/0
     volumes:
       - .:/koach
       - bundle:/usr/local/bundle
@@ -37,3 +40,4 @@ services:
       - "3000:3000"
     depends_on:
       - mysql
+      - redis

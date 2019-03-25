@@ -8,11 +8,6 @@
         <div class="coach-schedule__timeslots">
           <% if coach.time_slots.send("#{day}").present? %>
             <% coach.time_slots.send("#{day}").each do |ts| %>
-              <%#= content_tag(:timeslot, nil, data: {
-                timeSlotFrom: ts.formatted_from,
-                timeSlotTo: ts.formatted_to,
-                day: day
-              }.to_json) %>
               <% if ts.is_open.present? && @current_user.present?%>
                 <%= form_for @appointment do |f| %>
                   <%= f.hidden_field :coach_id, value: coach.id %>

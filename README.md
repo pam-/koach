@@ -19,13 +19,13 @@ They can book the time(s) that fit their schedule.
 `docker-compose build`
 
 - Setup the database
-`docker-compose run app --rm rake db:setup`
+`docker-compose run --rm app rake db:setup`
 
 - Run the app
 `docker-compose up`
 
 - To run tests
-`docker-compose run app --rm rspec`
+`docker-compose run --rm app rspec`
 
 - Visit the app at [localhost:3000](localhost:3000)!
 

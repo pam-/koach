@@ -15,18 +15,12 @@
                       clientId: @current_user.id
                     }.to_json
                 %>
-                <%#= form_for @appointment do |f| %>
-                  <%#= f.hidden_field :coach_id, value: coach.id %>
-                  <%#= f.hidden_field :client_id, value: @current_user.id %>
-                  <%#= f.hidden_field :time_slot_id, value: ts.id %>
-                  <%#= f.submit "#{ts.formatted_from} - #{ts.formatted_to}", class: 'class="coach-schedule__timeslot-open'%>
-                <%# end %>
               <% else %>
                 <div class="coach-schedule__timeslots-booked"><%= ts.formatted_from %> - <%= ts.formatted_to  %></div>
               <% end %>
             <% end %>
           <% else %>
-            <%# No appointments available :( %>
+            <% No appointments available :( %>
           <% end %>
         </div>
       </div>

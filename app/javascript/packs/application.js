@@ -7,6 +7,7 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+// https://vuejs.org/v2/guide/installation.html#Explanation-of-Different-Builds
 import Vue from 'vue/dist/vue.esm.js';
 import axios from 'axios';
 
@@ -18,7 +19,7 @@ axios.defaults.headers.common['X-CSRF-Token'] = token;
 axios.defaults.headers.common['Accept'] = 'application/json';
 window.axios = axios;
 
-import TimeSlot from "./components/timeslot.vue";
+import TimeSlot from "./components/time-slot.vue";
 
 const app = new Vue({
   el: '#app',

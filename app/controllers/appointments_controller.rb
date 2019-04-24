@@ -6,9 +6,15 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     if @appointment.save_and_update_slot
-      redirect_to root_path, flash: { success: "Successfully booked the appointment!"}
+      respond_to do |format|
+        format.json { render json: @appointment, status: :created }
+        format.html { redirect_to root_path, flash: { success: "Successfully booked the appointment!"} }
+      end
     else
-      redirect_to root_path, flash: { error: "We couldn't book the appointment. Please reload and try again!"}
+      respond_to do |format|
+        format.json { render json: @appointment.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, flash: { error: "We couldn't book the appointment. Please reload and try again!"} }
+      end
     end
   end
 

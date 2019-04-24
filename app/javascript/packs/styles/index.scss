@@ -70,17 +70,17 @@ header {
       max-height: 200px;
       height: 200px;
       overflow: scroll;
-      input[type="submit"],
+      button,
       &-booked {
         height: 35px;
-        cursor: pointer;
         border: none;
         width: 100%;
         font-size: 13px;
         margin: 5px 0;
       }
-      input[type="submit"] {
+      button {
         background-color: $brand-green;
+        width: 80%;
         &:hover {
           background-color: darken($color: $brand-green, $amount: 4);
         }

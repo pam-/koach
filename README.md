@@ -1,6 +1,6 @@
 # KOACH
 
-![demo](betterup.gif)
+![demo](gif.gif)
 
 Koach is a platform where users can book appointments with coaches.
 When a user visits Koach, they can see all available time slots divided in 30 minutes increments.
@@ -28,19 +28,3 @@ They can book the time(s) that fit their schedule.
 `docker-compose run --rm app rspec`
 
 - Visit the app at [localhost:3000](localhost:3000)!
-
------------------
-
-## What I would add:
-- responsiveness
-- partials
-- error handling + better messages
-- accessibility
-- add auth
-- add user's booked appointments
-- add confirmation option for coaches
-
-## What I would do differently
-- more tests
-- not use all the latest versions of everything in the setup because I ran into all the issues (good learning experience!)
-- **fix vue: I ran into some install errors and figured my time would be best used pivoting and submitting ~ something ~.
